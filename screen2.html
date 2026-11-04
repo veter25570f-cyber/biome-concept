@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>BIOME — 2 / первый вывод</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html,body{width:393px;height:852px;overflow:hidden;background:#04191B}
+  body{
+    font-family:-apple-system,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,sans-serif;
+    color:#E9F6F2;
+    font-variant-numeric:tabular-nums;
+    -webkit-text-size-adjust:100%;
+    background:
+      radial-gradient(320px 240px at 50% 300px, rgba(69,240,176,.07), rgba(69,240,176,0) 70%),
+      radial-gradient(360px 300px at 88% 0px, rgba(60,200,255,.07), rgba(60,200,255,0) 70%),
+      radial-gradient(120% 88% at 50% -14%, #0C3A3B 0%, #062A2C 40%, #04191B 74%, #03161A 100%);
+  }
+  .screen{position:relative;width:393px;height:852px;padding:0 24px 34px;display:flex;flex-direction:column;overflow:hidden}
+
+  /* status bar */
+  .statusbar{display:flex;align-items:center;justify-content:space-between;height:22px;margin-top:14px;flex:0 0 auto}
+  .time{font-size:15px;font-weight:600;letter-spacing:.01em;line-height:1}
+  .sys{display:flex;align-items:center;gap:6px;color:rgba(233,246,242,.72)}
+  .sys svg{display:block}
+
+  /* nav */
+  .nav{display:flex;align-items:center;justify-content:space-between;height:20px;margin-top:22px;flex:0 0 auto}
+  .nav .back{color:rgba(233,246,242,.60);display:block}
+  .wordmark{font-size:12px;font-weight:500;letter-spacing:.22em;color:rgba(233,246,242,.55);line-height:1;text-transform:lowercase}
+  .nav .spacer{width:20px;height:20px}
+
+  /* copy */
+  .eyebrow{font-size:10px;font-weight:500;letter-spacing:.16em;color:#45F0B0;opacity:.8;margin-top:26px;line-height:1.2;flex:0 0 auto}
+  h1{font-size:28px;line-height:1.16;font-weight:500;letter-spacing:-.02em;margin-top:8px;flex:0 0 auto;white-space:nowrap}
+  .sub{font-size:14px;line-height:1.5;color:rgba(233,246,242,.55);margin-top:12px;flex:0 0 auto}
+
+  /* biom */
+  .biomcap{font-size:11px;color:rgba(233,246,242,.50);margin-top:34px;line-height:1.3;flex:0 0 auto}
+  .bars{display:flex;justify-content:space-between;margin-top:10px;flex:0 0 auto}
+  .bcell{width:49px;display:flex;flex-direction:column;align-items:center}
+  .brail{width:18px;height:92px;border-radius:9px;background:rgba(233,246,242,.06);position:relative;overflow:hidden}
+  .bfill{position:absolute;left:0;right:0;bottom:0;border-radius:9px;background:rgba(69,240,176,.55)}
+  .bfill.low{background:#FFB86B}
+  .blabel{margin-top:8px;font-size:9px;line-height:11px;letter-spacing:.005em;color:rgba(233,246,242,.50);white-space:nowrap}
+  .bnote{margin-top:2px;height:12px;line-height:12px;font-size:10px;font-weight:500;color:#FFB86B;white-space:nowrap}
+
+  /* why */
+  .whycap{font-size:12px;color:rgba(233,246,242,.55);margin-top:38px;line-height:1.2;flex:0 0 auto}
+  .chips{display:flex;gap:7px;margin-top:9px;flex:0 0 auto}
+  .chip{height:28px;display:flex;align-items:center;padding:0 10px;border-radius:16px;border:1px solid rgba(120,255,214,.13);
+    background:rgba(255,255,255,.04);font-size:12px;color:rgba(233,246,242,.68);white-space:nowrap}
+
+  /* action card */
+  .card{margin-top:34px;flex:0 0 auto;border-radius:24px;border:1px solid rgba(120,255,214,.13);
+    background:rgba(255,255,255,.05);padding:18px}
+  .clabel{font-size:10px;font-weight:500;letter-spacing:.16em;color:#45F0B0;opacity:.8;line-height:1.2}
+  .ctitle{font-size:17px;font-weight:500;letter-spacing:-.01em;line-height:1.25;margin-top:9px}
+  .ctext{font-size:13px;line-height:1.45;color:rgba(233,246,242,.55);margin-top:8px}
+  .cta{display:block;width:100%;height:52px;margin-top:15px;border:0;border-radius:16px;
+    background:linear-gradient(100deg,#45F0B0 0%,#38DFC4 55%,#35D6C0 100%);color:#04191B;
+    font-family:inherit;font-size:16px;font-weight:600;letter-spacing:-.01em;
+    box-shadow:0 10px 30px rgba(60,220,200,.14)}
+  .clink{font-size:13px;color:#45F0B0;text-align:center;margin-top:12px;letter-spacing:-.005em}
+
+  /* bottom notes */
+  .tomorrow{display:flex;align-items:center;gap:7px;font-size:12px;line-height:1.35;color:rgba(233,246,242,.55);margin-top:30px;flex:0 0 auto}
+  .tomorrow svg{flex:0 0 auto;color:rgba(233,246,242,.45)}
+  .next{font-size:12.5px;font-weight:500;line-height:1.35;color:#45F0B0;margin-top:8px;flex:0 0 auto}
+
+  .home{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.5)}
+</style>
+</head>
+<body>
+<div class="screen">
+
+  <div class="statusbar">
+    <div class="time">9:41</div>
+    <div class="sys">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true">
+        <rect x="0" y="7.4" width="3" height="3.6" rx="1"/>
+        <rect x="4.6" y="5.4" width="3" height="5.6" rx="1"/>
+        <rect x="9.2" y="3" width="3" height="8" rx="1"/>
+        <rect x="13.8" y="0" width="3" height="11" rx="1" opacity=".4"/>
+      </svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M1.1 3.5a9.9 9.9 0 0 1 13.8 0"/>
+        <path d="M3.7 6.2a6.2 6.2 0 0 1 8.6 0"/>
+        <path d="M6.3 8.9a2.6 2.6 0 0 1 3.4 0"/>
+      </svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none" aria-hidden="true">
+        <rect x=".8" y=".8" width="20.6" height="10.4" rx="3" stroke="currentColor" stroke-opacity=".45"/>
+        <rect x="2.6" y="2.6" width="14" height="6.8" rx="1.8" fill="currentColor"/>
+        <path d="M23.2 4.2v3.6a2 2 0 0 0 0-3.6Z" fill="currentColor" fill-opacity=".45"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="nav">
+    <svg class="back" width="11" height="18" viewBox="0 0 11 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9.2 1.4 1.8 9l7.4 7.6"/>
+    </svg>
+    <div class="wordmark">biome</div>
+    <div class="spacer"></div>
+  </div>
+
+  <div class="eyebrow">ПЕРВЫЙ ВЫВОД · 40 СЕКУНД</div>
+  <h1>Твоя точка роста — сон.</h1>
+  <p class="sub">Ты спишь 6–7 часов, а после обеда «нет сил».<br>В такой связке сон важнее кофеина и добавок.</p>
+
+  <div class="biomcap">Твой биом: 7 систем, 1 узкое место</div>
+  <div class="bars">
+    <div class="bcell">
+      <div class="brail"><div class="bfill low" style="height:28px"></div></div>
+      <div class="blabel">Сон</div>
+      <div class="bnote">4/10</div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:60px"></div></div>
+      <div class="blabel">Энергия</div>
+      <div class="bnote"></div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:44px"></div></div>
+      <div class="blabel">Стресс</div>
+      <div class="bnote"></div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:60px"></div></div>
+      <div class="blabel">Питание</div>
+      <div class="bnote"></div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:28px"></div></div>
+      <div class="blabel">Движение</div>
+      <div class="bnote"></div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:44px"></div></div>
+      <div class="blabel">Восст.</div>
+      <div class="bnote"></div>
+    </div>
+    <div class="bcell">
+      <div class="brail"><div class="bfill" style="height:60px"></div></div>
+      <div class="blabel">Вес</div>
+      <div class="bnote"></div>
+    </div>
+  </div>
+
+  <div class="whycap">Почему я так решил</div>
+  <div class="chips">
+    <div class="chip">Сон 6–7 ч</div>
+    <div class="chip">Провал после обеда</div>
+    <div class="chip">Мало движения</div>
+  </div>
+
+  <div class="card">
+    <div class="clabel">ПЕРВЫЙ ШАГ · 10 МИНУТ СЕГОДНЯ</div>
+    <div class="ctitle">Убери экран за 40 минут до сна</div>
+    <div class="ctext">Не сдвигай отбой резко: ложись в 23:20 — так сон стабилизируется за 4–5 дней, без откатов.</div>
+    <button class="cta">Начать с этого</button>
+    <div class="clink">Мой ритм другой — обсудить с Biome</div>
+  </div>
+
+  <div class="tomorrow">
+    <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="6.5" cy="6.5" r="5.2"/>
+      <path d="M6.5 3.6v3.1l2.1 1.3"/>
+    </svg>
+    <div>Завтра в 9:00 спрошу, как прошло. Так работает коучинг.</div>
+  </div>
+  <div class="next">Заполнить карту здоровья → план на неделю</div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>
