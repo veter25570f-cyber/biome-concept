@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIOME — концепт первых экранов · FL.ru 5528000</title>
+<style>
+  :root{
+    --bg:#04191B; --text:#E9F6F2; --muted:rgba(233,246,242,.55);
+    --mint:#45F0B0; --line:rgba(120,255,214,.16); --card:rgba(255,255,255,.045);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:
+      radial-gradient(1100px 640px at 78% 4%, rgba(38,150,190,.22), transparent 62%),
+      radial-gradient(900px 620px at 6% 100%, rgba(38,235,170,.13), transparent 60%),
+      var(--bg);
+    color:var(--text);
+    font-family:-apple-system,'Segoe UI','Segoe UI Variable Display',Roboto,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:1180px;margin:0 auto;padding:56px 28px 72px}
+  .top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:12px;
+       font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .top .mint{color:var(--mint)}
+  h1{margin-top:34px;font-size:clamp(34px,5vw,58px);font-weight:600;letter-spacing:-.025em;line-height:1.07}
+  h1 span{color:var(--mint)}
+  .lead{margin-top:20px;max-width:760px;font-size:18px;line-height:1.55;color:rgba(233,246,242,.65)}
+  .path{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px;font-size:15px;color:rgba(233,246,242,.6)}
+  .path b{font-weight:500;color:rgba(233,246,242,.85)}
+  .path i{color:rgba(69,240,176,.7);font-style:normal}
+
+  .screens{display:flex;gap:56px;justify-content:center;align-items:flex-start;margin-top:56px;flex-wrap:wrap}
+  .item{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .phone{position:relative;border-radius:34px;overflow:hidden;
+    box-shadow:0 30px 80px rgba(0,0,0,.55), 0 0 0 1px rgba(120,255,214,.18);
+    background:#04191B}
+  .phone iframe{display:block;border:0;width:393px;height:852px;transform-origin:top left}
+  .scale{width:246px;height:533px;overflow:hidden}
+  .scale iframe{transform:scale(.625)}
+  .cap{font-size:14px;letter-spacing:.16em;text-transform:uppercase;color:rgba(233,246,242,.45)}
+  .btnrow{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  a.btn{display:inline-block;padding:13px 20px;border-radius:14px;font-size:15px;text-decoration:none;
+    color:#04191B;background:linear-gradient(120deg,#45F0B0,#35D6C0);font-weight:600}
+  a.ghost{color:var(--text);background:transparent;border:1px solid var(--line);font-weight:500}
+
+  .logic{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:64px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px 26px}
+  .card h2{font-size:17px;font-weight:600;margin-bottom:14px}
+  .card ol{list-style:none;counter-reset:li}
+  .card li{position:relative;padding-left:30px;margin-bottom:10px;font-size:14.5px;line-height:1.5;color:rgba(233,246,242,.72)}
+  .card li:before{counter-increment:li;content:counter(li,decimal-leading-zero);position:absolute;left:0;top:2px;
+    font-size:12px;color:var(--mint)}
+  .note{margin-top:44px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;
+    gap:18px;flex-wrap:wrap;font-size:13.5px;color:rgba(233,246,242,.4)}
+  @media (max-width:640px){
+    .scale{width:100%;height:auto;overflow:visible}
+    .scale iframe{transform:none;width:393px;height:852px;max-width:100%}
+    .logic{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div>FL.ru 5528000 · конкурс · 2026</div>
+    <div class="mint">biomeai.ru</div>
+  </div>
+
+  <h1>BIOME:<br>первые <span>40 секунд</span></h1>
+  <p class="lead">Концепция первых экранов по принципу «ценность раньше данных». Сейчас до первого результата — 12 вопросов на сайте, вторая анкета «Карта здоровья» и постановка цели; в отзывах пользователи застревают именно на цели.</p>
+
+  <div class="path">
+    <span><b>один вопрос</b></span><i>→</i>
+    <span><b>первый вывод за 40 секунд</b></span><i>→</i>
+    <span><b>один шаг на сегодня</b></span><i>→</i>
+    <span><b>«завтра в 9:00 спрошу»</b></span><i>→</i>
+    <span>карта здоровья как награда</span>
+  </div>
+
+  <div class="screens">
+    <div class="item">
+      <div class="phone scale"><iframe src="screen1.html" title="Экран 1 — первый контакт" scrolling="no"></iframe></div>
+      <div class="cap">01 · первый контакт</div>
+    </div>
+    <div class="item">
+      <div class="phone scale"><iframe src="screen2.html" title="Экран 2 — первый вывод" scrolling="no"></iframe></div>
+      <div class="cap">02 · первый вывод</div>
+    </div>
+  </div>
+
+  <div class="btnrow" style="justify-content:center">
+    <a class="btn" href="BIOME_konkurs_rabota.pdf">Конкурсная работа · PDF</a>
+    <a class="btn ghost" href="screen1.html" target="_blank" rel="noopener">Экран 1 полностью</a>
+    <a class="btn ghost" href="screen2.html" target="_blank" rel="noopener">Экран 2 полностью</a>
+  </div>
+
+  <div class="logic">
+    <div class="card">
+      <h2>Экран 1 — логика решений</h2>
+      <ol>
+        <li>Обещание и вопрос на одном экране: «Один вопрос, один тап. Дальше покажу первые выводы».</li>
+        <li>Цена входа видна и мала: «Шаг 1 из 3 · 40 секунд» вместо «Карта здоровья заполнена на 95%».</li>
+        <li>«Не могу выбрать — пусть Biome решит сам» снимает паралич выбора.</li>
+        <li>Регистрации нет: «Без регистрации. Данные останутся у тебя».</li>
+        <li>Тон бренда перенесён в микрокопию: не «достигай!», а спокойный вопрос.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h2>Экран 2 — логика решений</h2>
+      <ol>
+        <li>Метафора бренда стала интерфейсом: 7 систем и одно узкое место вместо «Рисков 3».</li>
+        <li>«Почему я так решил» — три чипа из ответов: объяснимость вместо чёрного ящика.</li>
+        <li>Один шаг на сегодня (10 минут) вместо плана на неделю.</li>
+        <li>«Завтра в 9:00 спрошу, как прошло» — вторая сессия заложена в первый запуск.</li>
+        <li>«Карта здоровья → план на неделю» — данные как награда, а не барьер.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="note">
+    <div>Конкурсная работа: 2 концепт-экрана · разбор первого пути · логика решений · метрики</div>
+    <div>HTML открывается без сборки и зависимостей</div>
+  </div>
+</div>
+</body>
+</html>
