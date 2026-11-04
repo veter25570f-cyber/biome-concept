@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>BIOME — 1 / первый контакт</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  html,body{width:393px;height:852px;overflow:hidden;background:#04191B}
+  body{
+    font-family:-apple-system,"SF Pro Display","SF Pro Text","Segoe UI",Roboto,sans-serif;
+    color:#E9F6F2;
+    font-variant-numeric:tabular-nums;
+    -webkit-text-size-adjust:100%;
+    background:
+      radial-gradient(360px 300px at 16% 150px, rgba(69,240,176,.10), rgba(69,240,176,0) 68%),
+      radial-gradient(120% 88% at 50% -14%, #0C3A3B 0%, #062A2C 40%, #04191B 74%, #03161A 100%);
+  }
+  .screen{position:relative;width:393px;height:852px;padding:0 24px 42px;display:flex;flex-direction:column;overflow:hidden}
+
+  /* status bar */
+  .statusbar{display:flex;align-items:center;justify-content:space-between;height:22px;margin-top:14px;flex:0 0 auto}
+  .time{font-size:15px;font-weight:600;letter-spacing:.01em;line-height:1}
+  .sys{display:flex;align-items:center;gap:6px;color:rgba(233,246,242,.72)}
+  .sys svg{display:block}
+
+  /* header */
+  .top{display:flex;align-items:center;justify-content:space-between;height:18px;margin-top:26px;flex:0 0 auto}
+  .wordmark{font-size:15px;font-weight:500;letter-spacing:.22em;color:rgba(233,246,242,.82);line-height:1;text-transform:lowercase}
+  .skip{font-size:13px;line-height:1;color:rgba(233,246,242,.42)}
+
+  /* orb */
+  .orb{width:44px;height:44px;margin:40px 0 0 2px;border-radius:50%;flex:0 0 auto;position:relative;
+    background:radial-gradient(circle at 34% 28%, #C8FFE8 0%, #6FF6C4 22%, #45F0B0 42%, #29E3E0 72%, #0B8C86 100%);
+    filter:blur(2px);
+    box-shadow:0 0 26px rgba(69,240,176,.28), 0 0 64px rgba(38,235,255,.12);
+  }
+  .orb::after{content:"";position:absolute;left:9px;top:7px;width:14px;height:11px;border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.55),rgba(255,255,255,0) 70%);filter:blur(1.5px)}
+
+  /* copy */
+  h1{font-size:30px;line-height:1.18;font-weight:500;letter-spacing:-.02em;margin-top:34px;flex:0 0 auto}
+  .sub{font-size:14px;line-height:1.5;color:rgba(233,246,242,.55);margin-top:18px;flex:0 0 auto}
+
+  /* grid */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:36px;flex:0 0 auto}
+  .tile{height:62px;border-radius:16px;border:1px solid rgba(120,255,214,.13);background:rgba(255,255,255,.045);
+    display:flex;align-items:center;gap:9px;padding:0 13px;min-width:0}
+  .tile .ic{flex:0 0 auto;color:rgba(233,246,242,.42)}
+  .tile .tl{flex:1 1 auto;min-width:0;font-size:14px;font-weight:500;letter-spacing:-.005em;line-height:1;white-space:nowrap}
+  .tile .chk{flex:0 0 auto;display:none}
+  .tile.sel{border-color:rgba(69,240,176,.55);background:rgba(69,240,176,.10)}
+  .tile.sel .ic{color:#45F0B0}
+  .tile.sel .chk{display:block}
+
+  .decide{font-size:13px;line-height:1.4;color:#45F0B0;margin-top:46px;flex:0 0 auto;align-self:flex-start;
+    text-decoration:underline dotted rgba(69,240,176,.45);text-underline-offset:4px}
+
+  /* footer */
+  .foot{margin-top:auto;flex:0 0 auto}
+  .progress{display:flex;align-items:center;justify-content:space-between;height:18px}
+  .dots{display:flex;align-items:center;gap:6px}
+  .dot{width:6px;height:6px;border-radius:50%;background:rgba(233,246,242,.20)}
+  .dot.on{background:#45F0B0}
+  .step{font-size:11px;color:rgba(233,246,242,.50);letter-spacing:.005em}
+  .cta{display:block;width:100%;height:56px;margin-top:14px;border:0;border-radius:18px;
+    background:linear-gradient(100deg,#45F0B0 0%,#38DFC4 55%,#35D6C0 100%);color:#04191B;
+    font-family:inherit;font-size:17px;font-weight:600;letter-spacing:-.01em;
+    box-shadow:0 10px 30px rgba(60,220,200,.14)}
+  .trust{font-size:11px;line-height:1.3;color:rgba(233,246,242,.35);text-align:center;margin-top:12px}
+
+  .home{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);width:134px;height:5px;border-radius:3px;background:rgba(255,255,255,.5)}
+</style>
+</head>
+<body>
+<div class="screen">
+
+  <div class="statusbar">
+    <div class="time">9:41</div>
+    <div class="sys">
+      <svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true">
+        <rect x="0" y="7.4" width="3" height="3.6" rx="1"/>
+        <rect x="4.6" y="5.4" width="3" height="5.6" rx="1"/>
+        <rect x="9.2" y="3" width="3" height="8" rx="1"/>
+        <rect x="13.8" y="0" width="3" height="11" rx="1" opacity=".4"/>
+      </svg>
+      <svg width="16" height="11" viewBox="0 0 16 11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+        <path d="M1.1 3.5a9.9 9.9 0 0 1 13.8 0"/>
+        <path d="M3.7 6.2a6.2 6.2 0 0 1 8.6 0"/>
+        <path d="M6.3 8.9a2.6 2.6 0 0 1 3.4 0"/>
+      </svg>
+      <svg width="25" height="12" viewBox="0 0 25 12" fill="none" aria-hidden="true">
+        <rect x=".8" y=".8" width="20.6" height="10.4" rx="3" stroke="currentColor" stroke-opacity=".45"/>
+        <rect x="2.6" y="2.6" width="14" height="6.8" rx="1.8" fill="currentColor"/>
+        <path d="M23.2 4.2v3.6a2 2 0 0 0 0-3.6Z" fill="currentColor" fill-opacity=".45"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="top">
+    <div class="wordmark">biome</div>
+    <div class="skip">Пропустить</div>
+  </div>
+
+  <div class="orb"></div>
+
+  <h1>Сначала спрошу,<br>что тебя беспокоит.</h1>
+  <p class="sub">Один вопрос, один тап. Дальше покажу<br>первые выводы — без анкеты на десять минут.</p>
+
+  <div class="grid">
+    <div class="tile sel">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="1.3" y="4.7" width="13" height="8.6" rx="2.6"/>
+        <path d="M16.4 7.3v3.4"/>
+        <path d="M4.2 9h2.6"/>
+      </svg>
+      <span class="tl">Усталость</span>
+      <svg class="chk" width="18" height="18" viewBox="0 0 18 18" aria-hidden="true">
+        <circle cx="9" cy="9" r="8.2" fill="rgba(69,240,176,.16)" stroke="#45F0B0" stroke-width="1.2"/>
+        <path d="M5.5 9.2l2.2 2.2 4.7-4.9" fill="none" stroke="#45F0B0" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+
+    <div class="tile">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M14.8 10.7A6 6 0 0 1 7.3 3.2a6 6 0 1 0 7.5 7.5Z"/>
+      </svg>
+      <span class="tl">Сон</span>
+    </div>
+
+    <div class="tile">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 2.6v8.2"/>
+        <path d="M5.7 7.6 9 10.9l3.3-3.3"/>
+        <path d="M3.4 14.9h11.2"/>
+      </svg>
+      <span class="tl">Вес</span>
+    </div>
+
+    <div class="tile">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3.4 6.8h11.2"/>
+        <path d="M3.4 6.8a5.6 5.6 0 0 0 11.2 0"/>
+      </svg>
+      <span class="tl">Пищеварение</span>
+    </div>
+
+    <div class="tile">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M1.8 9h3.1l1.7-3.6L9.1 12.4l1.7-3.4h5.4"/>
+      </svg>
+      <span class="tl">Тревога</span>
+    </div>
+
+    <div class="tile">
+      <svg class="ic" width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9" cy="9" r="3.1"/>
+        <path d="M9 1.9v1.6M9 14.5v1.6M1.9 9h1.6M14.5 9h1.6M3.9 3.9l1.2 1.2M12.9 12.9l1.2 1.2M14.1 3.9l-1.2 1.2M5.1 12.9l-1.2 1.2"/>
+      </svg>
+      <span class="tl">Энергия днём</span>
+    </div>
+  </div>
+
+  <div class="decide">Не могу выбрать — пусть Biome решит сам</div>
+
+  <div class="foot">
+    <div class="progress">
+      <div class="dots"><i class="dot on"></i><i class="dot"></i><i class="dot"></i></div>
+      <div class="step">Шаг 1 из 3 · 40 секунд</div>
+    </div>
+    <button class="cta">Дальше</button>
+    <div class="trust">Без регистрации. Данные останутся у тебя.</div>
+  </div>
+
+  <div class="home"></div>
+</div>
+</body>
+</html>
